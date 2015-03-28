@@ -1,0 +1,17 @@
+Description='eduroam'
+Interface='wlp2s0'
+Connection='wireless'
+IP='dhcp'
+ESSID='eduroam'
+Security='wpa-configsection'
+WPAConfigSection=(
+  'ssid="eduroam"'
+  'key_mgmt=WPA-EAP'
+  'eap=TTLS'
+  'proto=WPA RSN'
+  'identity="a-kennung@haw-hamburg.de"'
+  'anonymous_identity="anonymous@haw-hamburg.de"' 
+  'password="password"'
+  'ca_cert="/etc/ssl/certs/Deutsche_Telekom_Root_CA_2.pem"'
+  'phase2="auth=PAP"'
+)
