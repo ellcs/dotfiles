@@ -35,6 +35,8 @@ bindsym $win+Shift+m    exec xfce4-terminal -x alsamixer
 
 # start chromium
 bindsym $win+Shift+b            exec chromium
+
+# start slackdock; you can find that file in this repo under ./chromium/
 bindsym $win+Shift+s    exec slackdock
 
 # lock screen
