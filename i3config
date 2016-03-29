@@ -230,4 +230,4 @@ bar {
 # Autostarts
 exec redshift-gtk
 #exec thunderbird
-#exec pidgin
+exec pidgin

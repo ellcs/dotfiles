@@ -49,3 +49,5 @@ alias gpas="git submodule foreach git pull"
 # arch linux aliases
 alias 'sc=sudo systemctl'
 alias 'nc=sudo netctl'
+
+export EDITOR=vim
