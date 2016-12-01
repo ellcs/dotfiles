@@ -206,6 +206,7 @@ for_window [title="SlackDeck$"]      border none
 for_window [title="Terminal$"] border none
 
 # move specific windows to specific workspace
+for_window [class="Pidgin"] move to workspace 9
 for_window [title="Buddy List$"] move to workspace 10
 for_window [title="Thunderbird$"] move to workspace 10
 
