@@ -1,5 +1,0 @@
-#!/bin/sh
-# 1) Install the slackdock app in chromium
-# 2) Add this file to /usr/bin/sh and
-# 3) Run it by simply typing "slackdock"
-/usr/bin/chromium --profile-directory=Default --app-id=kpjhcddaofpohlbadnmnnaenmmefdbgn
