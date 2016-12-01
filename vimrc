@@ -2,12 +2,19 @@
 " Install vundle arch via the AUR or git
 " yaourt -S vundle
 set nocompatible               " be iMproved
+set rtp+=/usr/bin/fzf
 filetype off                   " required!
 call vundle#rc()
-filetype plugin indent on
+filetype plugin on
+filetype indent on
+filetype on
 Plugin 'godlygeek/tabular'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'ntpeters/vim-better-whitespace'
+" Bundle 'L9'
+" Bundle 'FuzzyFinder'
+Bundle 'ervandew/supertab'
 Bundle 'scrooloose/nerdtree'
 
 " autostart NERDTree
@@ -18,11 +25,19 @@ let g:NERDTreeDirArrows=0
 " markdown files might be represented via browserapps
 autocmd BufEnter *.md exe 'noremap <F5> :! chromium %:p<CR>'
 
+" Remove whitespaces on save
+autocmd BufWritePre * StripWhitespace
+
+noremap <F2> :NERDTreeFocus<CR>
+noremap <F3> :NERDTreeFind<CR>
+
 set laststatus=2
-set number
-set expandtab
+set shiftwidth=2
 set tabstop=2
-colorscheme elflord
+set number
+set hlsearch
+set expandtab
+colorscheme industry
 syntax on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
@@ -43,3 +58,6 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_rails = 1
