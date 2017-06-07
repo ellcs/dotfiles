@@ -54,3 +54,4 @@ alias 'sc=sudo systemctl'
 alias 'nc=sudo netctl'
 
 bindkey -e
+export EDITOR=vim
