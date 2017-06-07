@@ -11,6 +11,9 @@ SAVEHIST=10000
 
 # build with four cores
 # export MAKEFLAGS='-j4'
+export ANDROID_HOME=/opt/android-sdk
+export PATH=~/.gem/ruby/2.3.0/bin/:$PATH 
+export EDITOR=vim
 
 # optical
 # FORMAT OF PROMPT
@@ -31,9 +34,9 @@ if [ -e "$highlight" ]; then
 fi
 
 # aliases
-alias 'ls=ls -l --color'
+alias 'ls=ls --color'
 alias 'l=ls'
-alias 'll=ls'
+alias 'll=ls -l'
 alias lss='ls | sort'
 alias lsg='ls -a| grep'
 alias 'c=gcc'
@@ -49,3 +52,5 @@ alias gpas="git submodule foreach git pull"
 # arch linux aliases
 alias 'sc=sudo systemctl'
 alias 'nc=sudo netctl'
+
+bindkey -e
