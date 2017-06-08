@@ -12,11 +12,10 @@ Plugin 'godlygeek/tabular'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'ntpeters/vim-better-whitespace'
-" Bundle 'L9'
-" Bundle 'FuzzyFinder'
 Bundle 'ervandew/supertab'
+Plugin 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
-
+Bundle 'vim-ruby/vim-ruby'
 " autostart NERDTree
 autocmd vimenter * NERDTree
 let g:NERDTreeDirArrows=0
@@ -30,6 +29,7 @@ autocmd BufWritePre * StripWhitespace
 
 noremap <F2> :NERDTreeFocus<CR>
 noremap <F3> :NERDTreeFind<CR>
+noremap <F4> :NERDTreeClose<CR>:set nonumber<CR>
 
 set laststatus=2
 set shiftwidth=2
@@ -59,5 +59,12 @@ let g:EasyMotion_smartcase = 1
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_rails = 1
+
+" DOC
+"
+" zi	switch folding on or off
+" za	toggle current fold open/closed
+" zc	close current fold
+" zR	open all folds
+" zM	close all folds
+" zv	expand folds to reveal cursor
