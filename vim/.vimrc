@@ -23,6 +23,7 @@ Bundle 'scrooloose/nerdtree'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'atelierbram/vim-colors_atelier-schemes'
 " Bundle 'L9'
 " Bundle 'FuzzyFinder'
 Bundle 'ervandew/supertab'
@@ -39,7 +40,6 @@ autocmd BufEnter *.md exe 'noremap <F5> :! chromium %:p<CR>'
 " Makes a border at specified column
 if (exists('+colorcolumn'))
     set colorcolumn=80
-    highlight ColorColumn ctermbg=9
 endif
 
 " Remove whitespaces on save
@@ -47,6 +47,7 @@ autocmd BufWritePre * StripWhitespace
 
 noremap <F2> :NERDTreeFocus<CR>
 noremap <F3> :NERDTreeFind<CR>
+nmap    <F4> <Plug>(easymotion-overwin-f)
 noremap f :Files<CR>
 
 set laststatus=2
@@ -64,11 +65,6 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " Jump to anywhere you want with minimal keystrokes, with just one key
 " binding.
 " " `s{char}{label}`
-nmap f <Plug>(easymotion-overwin-f)
-" " or
-" " `s{char}{char}{label}`
-" " Need one more keystroke, but on average, it may be more comfortable.
-nmap f <Plug>(easymotion-overwin-f2)
 "
 " " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
@@ -76,7 +72,6 @@ let g:EasyMotion_smartcase = 1
 " " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-=======
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
 " Easymotion minimal configuration
@@ -112,3 +107,4 @@ let g:NERDTreeIndicatorMapCustom = {
 
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
+let FZF_PREVIEW_HEIGHT=10
