@@ -1,4 +1,12 @@
 " vundle and vundle plugins init " Install vundle arch via the AUR or git " yaourt -S vundle
+" vundle is a plugin manager
+" Install vundle arch via the AUR or git
+" After vundle installation run command:
+"
+"   :PluginInstall
+"
+" Below listed Plugins and Bundles will be installed.
+"
 set nocompatible               " be iMproved
 filetype off                   " required!
 set t_Co=256
@@ -13,12 +21,14 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'ntpeters/vim-better-whitespace'
 Bundle 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-fugitive'
-Plugin 'atelierbram/vim-colors_atelier-schemes'
 Bundle 'scrooloose/nerdtree'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'rhysd/open-pdf.vim'
+Plugin 'atelierbram/vim-colors_atelier-schemes'
+" Bundle 'L9'
+" Bundle 'FuzzyFinder'
 Bundle 'ervandew/supertab'
 Bundle 'vim-syntastic/syntastic'
 
@@ -32,12 +42,16 @@ autocmd BufEnter *.md exe 'noremap <F5> :! chromium %:p<CR>'
 let g:pdf_convert_on_read=1
 let g:pdf_convert_on_edit=1
 
+" Makes a border at specified column
+if (exists('+colorcolumn'))
+    set colorcolumn=80
+endif
+
 " Remove whitespaces on save
 autocmd BufWritePre * StripWhitespace
 
 noremap <F2> :NERDTreeFocus<CR>
 noremap <F3> :NERDTreeFind<CR>
-noremap <F4> :NERDTreeClose<CR>:set nonumber<CR>:set paste<CR>
 nmap    <F4> <Plug>(easymotion-overwin-f)
 noremap f :Files<CR>
 
@@ -51,6 +65,18 @@ set background=dark
 colorscheme Atelier_ForestDark
 syntax on
 
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key
+" binding.
+" " `s{char}{label}`
+"
+" " Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+"
+" " JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
 " Easymotion minimal configuration
@@ -94,4 +120,4 @@ let g:NERDTreeIndicatorMapCustom = {
 
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
-
+let FZF_PREVIEW_HEIGHT=10

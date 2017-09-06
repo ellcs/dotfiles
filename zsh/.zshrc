@@ -15,6 +15,9 @@ SAVEHIST=10000
 
 # build with four cores
 # export MAKEFLAGS='-j4'
+export ANDROID_HOME=/opt/android-sdk
+export PATH=~/.gem/ruby/2.3.0/bin/:$PATH 
+export EDITOR=vim
 
 # optical
 # FORMAT OF PROMPT
@@ -56,6 +59,7 @@ alias commit="git commit"
 alias 'sc=sudo systemctl'
 alias 'nc=sudo netctl'
 
+bindkey -e
 export EDITOR=vim
 bindkey -v
 
