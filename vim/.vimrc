@@ -18,6 +18,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'ntpeters/vim-better-whitespace'
+Bundle 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -79,7 +80,6 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-nmap <F4> <Plug>(easymotion-overwin-f)
 " or
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
@@ -92,6 +92,15 @@ let g:EasyMotion_smartcase = 1
 map <Leader>j <Plug>(easymotion-j)
         map <Leader>k <Plug>(easymotion-k)
 
+
+" DOC
+"
+" zi	switch folding on or off
+" za	toggle current fold open/closed
+" zc	close current fold
+" zR	open all folds
+" zM	close all folds
+" zv	expand folds to reveal cursor
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "M",
     \ "Staged"    : "S",
