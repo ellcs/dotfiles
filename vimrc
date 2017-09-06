@@ -1,6 +1,4 @@
-" vundle and vundle plugins init
-" Install vundle arch via the AUR or git
-" yaourt -S vundle
+" vundle and vundle plugins init " Install vundle arch via the AUR or git " yaourt -S vundle
 set nocompatible               " be iMproved
 filetype off                   " required!
 set t_Co=256
@@ -20,8 +18,7 @@ Bundle 'scrooloose/nerdtree'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-" Bundle 'L9'
-" Bundle 'FuzzyFinder'
+Plugin 'rhysd/open-pdf.vim'
 Bundle 'ervandew/supertab'
 Bundle 'vim-syntastic/syntastic'
 
@@ -32,6 +29,8 @@ let g:NERDTreeDirArrows=0
 " this command opens your browser, which is loading current file
 " markdown files might be represented via browserapps
 autocmd BufEnter *.md exe 'noremap <F5> :! chromium %:p<CR>'
+let g:pdf_convert_on_read=1
+let g:pdf_convert_on_edit=1
 
 " Remove whitespaces on save
 autocmd BufWritePre * StripWhitespace
@@ -95,3 +94,4 @@ let g:NERDTreeIndicatorMapCustom = {
 
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
+
