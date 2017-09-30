@@ -20,10 +20,14 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'ntpeters/vim-better-whitespace'
 Bundle 'vim-ruby/vim-ruby'
+" Git
 Plugin 'tpope/vim-fugitive'
+" File browser
 Bundle 'scrooloose/nerdtree'
+" Fuzzy searcher
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
+" Git in file browser
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'rhysd/open-pdf.vim'
 Plugin 'atelierbram/vim-colors_atelier-schemes'
