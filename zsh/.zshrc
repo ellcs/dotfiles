@@ -55,6 +55,11 @@ alias gs='git status'
 alias gd='git diff'
 alias gc='git commit'
 alias commit="git commit"
+
+alias 'f=file=$(fzf) && print -s "vim $file" && vim $file'
+alias 'v=vim'
+alias 'bim=vim'
+alias 'cim=vim'
 # arch linux aliases
 alias 'sc=sudo systemctl'
 alias 'nc=sudo netctl'
@@ -79,3 +84,4 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
