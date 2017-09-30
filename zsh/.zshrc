@@ -17,7 +17,6 @@ SAVEHIST=10000
 # export MAKEFLAGS='-j4'
 export ANDROID_HOME=/opt/android-sdk
 export PATH=~/.gem/ruby/2.3.0/bin/:$PATH 
-export EDITOR=vim
 
 # optical
 # FORMAT OF PROMPT
@@ -62,7 +61,6 @@ alias 'bim=vim'
 alias 'cim=vim'
 
 bindkey -e
-export EDITOR=vim
 bindkey -v
 
 bindkey '^P' up-history
@@ -81,4 +79,5 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
+export EDITOR=vim
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
