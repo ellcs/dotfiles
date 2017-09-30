@@ -27,8 +27,6 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'rhysd/open-pdf.vim'
 Plugin 'atelierbram/vim-colors_atelier-schemes'
-" Bundle 'L9'
-" Bundle 'FuzzyFinder'
 Bundle 'ervandew/supertab'
 Bundle 'vim-syntastic/syntastic'
 
