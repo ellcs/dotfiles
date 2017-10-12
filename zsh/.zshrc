@@ -4,7 +4,6 @@ autoload -U colors     && colors
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
 
-export PATH=$PATH:/home/ellcs/.gem/ruby/2.4.0/bin
 
 setopt appendhistory autocd extendedglob notify
 zstyle :compinstall filename '/home/alex/.zshrc'
@@ -13,10 +12,6 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
-# build with four cores
-# export MAKEFLAGS='-j4'
-export ANDROID_HOME=/opt/android-sdk
-export PATH=~/.gem/ruby/2.3.0/bin/:$PATH 
 
 # optical
 # FORMAT OF PROMPT
@@ -40,8 +35,6 @@ fi
 alias 'l=ls -l'
 alias 'll=ls'
 alias 'ls=ls --color'
-alias lss='ls | sort'
-alias lsg='ls -a| grep'
 alias 'c=gcc'
 alias 'cd..=cd ..'
 alias '..=cd ..'
@@ -50,6 +43,7 @@ alias 'fucking=sudo'
 alias 'feh=feh -F'
 alias 'beepoff=xset -b'
 alias g='git'
+alias gl='git log'
 alias gs='git status'
 alias gd='git diff'
 alias gc='git commit'
@@ -78,6 +72,13 @@ function zle-line-init zle-keymap-select {
 
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+export PATH=$PATH:/home/ellcs/.gem/ruby/2.4.0/bin
+# build with four cores
+# export MAKEFLAGS='-j4'
+export ANDROID_HOME=/opt/android-sdk
+export PATH=~/.gem/ruby/2.3.0/bin/:$PATH
 export KEYTIMEOUT=1
 export EDITOR=vim
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
