@@ -46,11 +46,6 @@ autocmd BufEnter *.md exe 'noremap <F5> :! chromium %:p<CR>'
 let g:pdf_convert_on_read=1
 let g:pdf_convert_on_edit=1
 
-" Makes a border at specified column
-if (exists('+colorcolumn'))
-    set colorcolumn=80
-endif
-
 " Remove whitespaces on save
 autocmd BufWritePre * StripWhitespace
 
@@ -62,7 +57,7 @@ noremap f :Files<CR>
 set laststatus=2
 set shiftwidth=2
 set tabstop=2
-set colorcolumn=100
+let &colorcolumn="80,100,".join(range(120,999),",")
 set number
 set hlsearch
 set expandtab
