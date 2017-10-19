@@ -23,6 +23,8 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Bundle 'FuzzyFinder'
 Bundle 'ervandew/supertab'
 Bundle 'vim-syntastic/syntastic'
+Bundle 'junkblocker/git-time-lapse'
+Plugin 'vim-airline/vim-airline'
 
 " autostart NERDTree
 autocmd vimenter * NERDTree
@@ -42,6 +44,7 @@ noremap f :Files<CR>
 set laststatus=2
 set shiftwidth=2
 set tabstop=2
+set colorcolumn=100
 set number
 set hlsearch
 set expandtab
@@ -84,3 +87,5 @@ let g:NERDTreeIndicatorMapCustom = {
 
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
+
+let g:airline#extensions#tabline#enabled = 1
