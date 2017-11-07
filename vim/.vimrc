@@ -49,6 +49,8 @@ let g:pdf_convert_on_edit=1
 " Remove whitespaces on save
 autocmd BufWritePre * StripWhitespace
 
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprevious<CR>
 noremap <F2> :NERDTreeFocus<CR>
 noremap <F3> :NERDTreeFind<CR>
 nmap    <F4> <Plug>(easymotion-overwin-f)
