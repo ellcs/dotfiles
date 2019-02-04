@@ -77,9 +77,10 @@ SAVEHIST=10000
 export ANDROID_HOME=/opt/android-sdk
 export KEYTIMEOUT=1
 export EDITOR=vim
-export PATH=~/.gem/ruby/2.3.0/bin/:$PATH
+export PATH=~/.gem/ruby/2.3.0/bin:$PATH
 export PATH=~/.gem/ruby/2.4.0/bin:$PATH
 export PATH=~/.gem/ruby/2.5.0/bin:$PATH
+export PATH=~/.gem/ruby/2.6.0/bin:$PATH
 export PATH=~/scripts:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
