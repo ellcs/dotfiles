@@ -126,3 +126,5 @@ let g:rubycomplete_rails = 1
 
 let g:airline#extensions#tabline#enabled = 1
 let FZF_PREVIEW_HEIGHT=10
+
+hi SpellBad cterm=underline
