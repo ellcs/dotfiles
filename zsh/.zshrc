@@ -24,7 +24,8 @@ if [ "$(id -u)" = "0" ]; then
   # ensure root has red promt
   PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[blue]%}%1~ %{$reset_color%}%# "
 else
-  PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}%1~ %{$reset_color%}%# "
+  #PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}%1~ %{$reset_color%}%# "
+  PROMPT="%(?..%{$fg[red]%})λ%{$reset_color%} "
   # typical
 fi
 RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
