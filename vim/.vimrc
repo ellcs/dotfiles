@@ -54,6 +54,7 @@ nnoremap <C-p> :bprevious<CR>
 noremap <F2> :NERDTreeFocus<CR>
 noremap <F3> :NERDTreeFind<CR>
 nmap    <F4> <Plug>(easymotion-overwin-f)
+nmap    <F5> :TagbarToggle<CR>
 noremap f :Files<CR>
 
 set laststatus=2
