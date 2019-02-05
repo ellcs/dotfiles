@@ -19,9 +19,9 @@ Plugin 'godlygeek/tabular'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'ntpeters/vim-better-whitespace'
-Bundle 'vim-ruby/vim-ruby'
+
+Plugin 'majutsushi/tagbar'
 " Git
-Plugin 'tpope/vim-fugitive'
 " File browser
 Bundle 'scrooloose/nerdtree'
 " Fuzzy searcher
@@ -29,13 +29,14 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 " Git in file browser
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'rhysd/open-pdf.vim'
+"Plugin 'rhysd/open-pdf.vim'
 Plugin 'atelierbram/vim-colors_atelier-schemes'
 Bundle 'ervandew/supertab'
-Bundle 'vim-syntastic/syntastic'
 Bundle 'junkblocker/git-time-lapse'
 Plugin 'vim-airline/vim-airline'
+Plugin 'tpope/vim-fugitive'
 
+call vundle#end()
 " autostart NERDTree
 autocmd vimenter * NERDTree
 let g:NERDTreeDirArrows=0
