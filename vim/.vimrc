@@ -65,9 +65,14 @@ let &colorcolumn="80,100,".join(range(120,999),",")
 set number
 set hlsearch
 set expandtab
+set hidden
+syntax on
+
+set cursorline
+set cursorcolumn
+
 set background=dark
 colorscheme Atelier_ForestDark
-syntax on
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
