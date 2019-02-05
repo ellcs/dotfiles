@@ -14,8 +14,13 @@ bindkey '^r' history-incremental-search-backward
 
 
 setopt appendhistory autocd extendedglob notify
-#zstyle :compinstall filename '/home/alex/.zshrc'
-#History
+zstyle :compinstall filename '/home/alex/.zshrc'
+unset SSH_ASKPASS
+
+# History
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
 
 
 # optical
@@ -31,9 +36,14 @@ RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
 # highlighting:
 # pacman -S zsh-syntax-highlighting
-highlight=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-if [ -e "$highlight" ]; then
-  source $highlight
+highlight_file=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -e "$highlight_file" ]; then
+  source $highlight_file
+fi
+
+auto_suggestions="$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+if [ -e auto_suggestions ]; then
+  source $auto_suggestions
 fi
 
 # aliases
@@ -72,9 +82,6 @@ zle -N zle-keymap-select
 
 # build with four cores
 # export MAKEFLAGS='-j4'
-HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
 export ANDROID_HOME=/opt/android-sdk
 export KEYTIMEOUT=1
 export EDITOR=vim
