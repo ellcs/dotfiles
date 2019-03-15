@@ -15,6 +15,7 @@ call vundle#rc()
 filetype plugin on
 filetype indent on
 filetype on
+Plugin 'posva/vim-vue'
 Plugin 'godlygeek/tabular'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'plasticboy/vim-markdown'
@@ -29,7 +30,6 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 " Git in file browser
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-"Plugin 'rhysd/open-pdf.vim'
 Plugin 'atelierbram/vim-colors_atelier-schemes'
 Bundle 'ervandew/supertab'
 Bundle 'junkblocker/git-time-lapse'
@@ -37,18 +37,30 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
+" Checker
+Bundle 'vim-syntastic/syntastic'
+Bundle 'junkblocker/git-time-lapse'
+Plugin 'vim-airline/vim-airline'
+Plugin 'lervag/file-line'
+Plugin 'jceb/vim-orgmode'
+
+autocmd BufNewFile,BufRead *.vue   set syntax=html
+>>>>>>> c0a9835874b6b942c7ffb6ff65e1ff17161fc3eb
 " autostart NERDTree
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
+autocmd VimEnter * if argc() == 0 | NERDTree | endif
 let g:NERDTreeDirArrows=0
 
 " this command opens your browser, which is loading current file
 " markdown files might be represented via browserapps
 autocmd BufEnter *.md exe 'noremap <F5> :! chromium %:p<CR>'
+
 let g:pdf_convert_on_read=1
 let g:pdf_convert_on_edit=1
 
 " Remove whitespaces on save
 autocmd BufWritePre * StripWhitespace
+
 
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
@@ -56,12 +68,12 @@ noremap <F2> :NERDTreeFocus<CR>
 noremap <F3> :NERDTreeFind<CR>
 nmap    <F4> <Plug>(easymotion-overwin-f)
 nmap    <F5> :TagbarToggle<CR>
+map     <F6> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 noremap f :Files<CR>
 
 set laststatus=2
 set shiftwidth=2
 set tabstop=2
-let &colorcolumn="80,100,".join(range(120,999),",")
 set number
 set hlsearch
 set expandtab
@@ -71,21 +83,10 @@ syntax on
 set cursorline
 set cursorcolumn
 
+let &colorcolumn="80,100,".join(range(120,999),",")
 set background=dark
+set clipboard=unnamed
 colorscheme Atelier_ForestDark
-
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-" Jump to anywhere you want with minimal keystrokes, with just one key
-" binding.
-" " `s{char}{label}`
-"
-" " Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
-"
-" " JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
 " Easymotion minimal configuration
@@ -131,6 +132,6 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
 
 let g:airline#extensions#tabline#enabled = 1
-let FZF_PREVIEW_HEIGHT=10
 
 hi SpellBad cterm=underline
+let FZF_PREVIEW_HEIGHT=12
