@@ -27,13 +27,13 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $win
 
 # start a terminal
-bindsym $win+Return     exec xfce4-terminal
+bindsym $win+Return     exec terminology
 
 # start htop
-bindsym $win+Shift+h    exec xfce4-terminal -x htop -u alex
+bindsym $win+Shift+h    exec terminology -e htop -u alex
 
 #start alsamixer
-bindsym $win+Shift+m    exec xfce4-terminal -x alsamixer
+bindsym $win+Shift+m    exec terminology -e alsamixer
 
 # start chromium
 bindsym $win+Shift+b            exec chromium
@@ -103,7 +103,7 @@ bindsym $win+a focus parent
 # focus the child container
 #bindsym $win+d focus child
 
-workspace 1     output eDP1 
+workspace 1     output eDP1
 workspace 2     output eDP1
 workspace 3     output eDP1
 workspace 4     output eDP1
@@ -185,9 +185,9 @@ bindsym $win+r mode "resize"
 
 # shutdownmode
 mode "[s]hutdown; s[u]spend; [r]eboot; [i]3lock; [e]xit i3" {
-        bindsym s exec shutdown now        
-        bindsym r exec reboot                   
-        bindsym u exec systemctl suspend        
+        bindsym s exec shutdown now
+        bindsym r exec reboot
+        bindsym u exec systemctl suspend
         bindsym i exec ~/.bin/i3lock && xset dpms force off
         bindsym e exec i3-msg exit
 
@@ -213,8 +213,8 @@ for_window [title="Thunderbird$"] move to workspace 10
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
         position top
+        status_command /home/$USER/script/conky-i3bar
 
         colors {
                 background #002A00
