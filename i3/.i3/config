@@ -36,21 +36,18 @@ bindsym $win+Shift+h    exec terminology -e htop -u alex
 bindsym $win+Shift+m    exec terminology -e alsamixer
 
 # start chromium
-bindsym $win+Shift+b            exec chromium
-
-# start slackdock; you can find that file in this repo under ./chromium/
-bindsym $win+Shift+s    exec slackdock
+bindsym $win+Shift+b    exec chromium
 
 # lock screen
-bindsym $win+Escape      exec i3lock -c 000000
-bindsym $win+F1		  exec xset dpms force off
+bindsym $win+Escape     exec i3lock -c 000000
+bindsym $win+F1		exec xset dpms force off
 
 # kill focused window
 bindsym $win+Shift+q    kill
 bindsym $alt+F4         kill
 
 # start dmenu (a program launcher)
-bindsym $win+d                          exec dmenu_run
+bindsym $win+d          exec dmenu_run
 #bindsym $alt+F2                         exec dmenu_run
 
 # change focus
@@ -146,17 +143,19 @@ bindsym $win+Tab workspace next
 bindsym $alt+Shift+Tab workspace prev
 bindsym $win+Shift+Tab workspace prev
 
-# screenshot
-bindsym $win+F12        exec "xfce4-screenshooter -w --delay 0 -o gimp"
-
 # brightness
-bindcode 232 exec xbacklight -dec 5
-bindcode 233 exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec light -U 5 
+bindsym XF86MonBrightnessUp   exec light -A 5 
 
 # reload the configuration file
 bindsym $win+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $win+Shift+r restart
+
+gaps inner 15
+gaps outer 0
+smart_borders on
+new_window none
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -214,16 +213,15 @@ for_window [title="Thunderbird$"] move to workspace 10
 # finds out, if available)
 bar {
         position top
-        status_command /home/$USER/script/conky-i3bar
+        status_command exec ~/scripts/conky-i3bar
 
         colors {
-                background #002A00
+                background #4c6a94
                 statusline #ffffff
                 separator #666666
 
-                focused_workspace  #005500 #009900 #ffffff
-                #focused_workspace  #4c7899 #285577 #ffffff
-                active_workspace   #333333 #5f676a #ffffff
+                focused_workspace  #005500 #4c6a94 #ffffff focused_workspace  #4c7899 #285577 #ffffff
+                active_workspace   #333333 #5f676a #000000
                 inactive_workspace #333333 #222222 #888888
                 urgent_workspace   #2f343a #900000 #ffffff
         }
@@ -231,6 +229,6 @@ bar {
 }
 
 # Autostarts
-exec redshift-gtk
-#exec thunderbird
+#exec redshift-gtk
+exec thunderbird
 exec pidgin
