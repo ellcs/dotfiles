@@ -67,6 +67,7 @@ alias gc='git commit'
 alias gp='git pull'
 alias commit="git commit"
 
+alias 'vim=nvim'
 alias 'f=file=$(fzf) && print -s "vim $file" && vim $file'
 alias 'v=vim'
 alias 'bim=vim'
