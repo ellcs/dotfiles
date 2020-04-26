@@ -31,17 +31,12 @@ export PATH=~/.gem/ruby/2.6.0/bin:$PATH
 export PATH=~/.gem/ruby/2.7.0/bin:$PATH
 export PATH=~/scripts:$PATH
 
-# optical
 # FORMAT OF PROMPT
 if [ "$(id -u)" = "0" ]; then
-  # ensure root has red promt
   PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[blue]%}%1~ %{$reset_color%}%# "
 else
-  #PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}%1~ %{$reset_color%}%# "
   PROMPT="%(?..%{$fg[red]%})λ%{$reset_color%} "
-  # typical
 fi
-RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
 # highlighting:
 # pacman -S zsh-syntax-highlighting
@@ -80,10 +75,13 @@ alias 'bim=vim'
 alias 'cim=vim'
 
 
-function zle-line-init zle-keymap-select {
-    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-    RPS2=$RPS1
-    zle reset-prompt
+# encodes the whole string
+# example:
+#   echo -n 'hi' | urlencode
+#   urlencode 'hi'
+function urlencode() {
+  url=$1
+  ruby -e 'puts (ARGV[0] || $stdin.readline).bytes.map { |b| "%%%02X" % b }.join' $1
 }
 
 zle -N zle-line-init
