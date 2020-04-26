@@ -24,6 +24,12 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
+export PATH=~/.gem/ruby/2.3.0/bin:$PATH
+export PATH=~/.gem/ruby/2.4.0/bin:$PATH
+export PATH=~/.gem/ruby/2.5.0/bin:$PATH
+export PATH=~/.gem/ruby/2.6.0/bin:$PATH
+export PATH=~/.gem/ruby/2.7.0/bin:$PATH
+export PATH=~/scripts:$PATH
 
 # optical
 # FORMAT OF PROMPT
