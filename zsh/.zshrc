@@ -86,8 +86,18 @@ function zle-line-init zle-keymap-select {
     zle reset-prompt
 }
 
-zle -N zle-line-init
-zle -N zle-keymap-select
+
+function refactor() {
+  from=$1
+  to=$2
+  dir=$3
+  for i in $(grep -rl "$from" $dir); do
+    vim -c "%s/${from}/${to}/gc" -c "wq" "$i";
+  done
+}
+
+#zle -N zle-line-init
+#zle -N zle-keymap-select
 
 # build with four cores
 # export MAKEFLAGS='-j4'
