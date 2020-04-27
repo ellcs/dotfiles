@@ -32,7 +32,7 @@ else
   PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}%1~ %{$reset_color%}%# "
   # typical
 fi
-RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
+#RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
 # highlighting:
 # pacman -S zsh-syntax-highlighting
