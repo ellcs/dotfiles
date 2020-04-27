@@ -58,12 +58,21 @@ alias 'pdf=okular'
 alias 'fucking=sudo'
 alias 'feh=feh -F'
 alias 'beepoff=xset -b'
+# git
 alias g='git'
+alias ga='git add'
 alias gl='git log'
 alias gs='git status'
 alias gd='git diff'
 alias gc='git commit'
-alias commit="git commit"
+alias gg='git gui'
+function gj() {
+  git log \
+      --pretty=format:'{%n  "commit": "%H",%n  "author": "%aN <%aE>",%n  "date": "%ad",%n  "message": "%f"%n},' \
+      $@ | \
+      perl -pe 'BEGIN{print "["}; END{print "]\n"}' | \
+      perl -pe 's/},]/}]/'
+}
 
 alias 'f=file=$(fzf) && print -s "vim $file" && vim $file'
 alias 'v=vim'
