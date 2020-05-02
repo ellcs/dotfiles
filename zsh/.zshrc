@@ -51,9 +51,9 @@ if [ -e auto_suggestions ]; then
 fi
 
 # aliases
-alias 'l=ls -l'
-alias 'la= ls -al'
-alias 'll=ls'
+alias 'l=ls'
+alias 'la=ls -al'
+alias 'll=ls -l'
 alias 'ls=ls --color'
 alias 'cd..=cd ..'
 alias '..=cd ..'
