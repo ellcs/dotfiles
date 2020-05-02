@@ -62,6 +62,7 @@ alias 'beepoff=xset -b'
 
 alias 'se=(gimp &); sleep 0.3; gimp $(ls -d --sort=time ~/Pictures/screenshots/* | fzf -m | paste -d" " -s -)'
 alias 'sx=pic=$(ls -d --sort=time ~/Pictures/screenshots/* | fzf) && xclip -selection clipboard -t image/png -i "$pic"'
+alias ipa="ip a"
 alias g='git'
 alias ga='git add'
 alias gl='git log'
