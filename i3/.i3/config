@@ -240,5 +240,6 @@ bar {
 
 # Autostarts
 #exec redshift-gtk
+exec --no-startup-id compton -b &
 exec thunderbird
 exec pidgin
