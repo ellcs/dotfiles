@@ -16,7 +16,7 @@ bindkey '^[[1;5D' emacs-backward-word
 
 
 setopt appendhistory autocd extendedglob notify
-zstyle :compinstall filename '/home/alex/.zshrc'
+zstyle :compinstall filename '/home/ellcs/.zshrc'
 unset SSH_ASKPASS
 
 # History
