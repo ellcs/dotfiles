@@ -51,7 +51,7 @@ bindsym $win+F1		exec xset dpms force off
 
 # kill focused window
 bindsym $win+Shift+q    kill
-bindsym $alt+F4         kill
+#bindsym $alt+F4         kill
 
 # start dmenu (a program launcher)
 bindsym $win+d          exec dmenu_run
@@ -145,9 +145,9 @@ bindsym $win+Shift+9 move container to workspace 9
 bindsym $win+Shift+0 move container to workspace 10
 
 # toggle workspaces
-bindsym $alt+Tab workspace next
+#bindsym $alt+Tab workspace next
 bindsym $win+Tab workspace next
-bindsym $alt+Shift+Tab workspace prev
+#bindsym $alt+Shift+Tab workspace prev
 bindsym $win+Shift+Tab workspace prev
 
 # brightness
