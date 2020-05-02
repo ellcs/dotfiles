@@ -34,6 +34,11 @@ bindsym $win+Shift+Return exec "terminology"
 # start htop
 bindsym $win+Shift+h    exec terminology -e htop -u alex
 
+# screenshot
+#bindsym $win+Shift+Return    exec "/home/ellcs/scripts/screenshot_i3.sh ALL"
+bindsym $win+Shift+s    exec "/home/ellcs/scripts/screenshot_i3.sh FOCUS"
+#bindsym $win+Shift+s        exec gimp -b '(plug-in-screenshot 0 FALSE 0 0 0 0 0)'
+
 #start alsamixer
 bindsym $win+Shift+m    exec terminology -e alsamixer
 
