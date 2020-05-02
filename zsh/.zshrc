@@ -69,7 +69,7 @@ alias gs='git status'
 alias gd='git diff'
 alias gc='git commit'
 alias gp='git pull'
-alias commit="git commit"
+alias gg='git gui'
 
 
 
