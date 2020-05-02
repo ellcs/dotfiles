@@ -21,8 +21,8 @@ unset SSH_ASKPASS
 
 # History
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 
 export PATH=~/.gem/ruby/2.3.0/bin:$PATH
 export PATH=~/.gem/ruby/2.4.0/bin:$PATH
