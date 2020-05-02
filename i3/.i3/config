@@ -159,8 +159,11 @@ bindsym $win+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $win+Shift+r restart
 
-gaps inner 15
-gaps outer 0
+# gaps inner 15
+# gaps outer 0
+
+gaps inner 30
+gaps outer 15
 smart_borders on
 new_window none
 
