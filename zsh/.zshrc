@@ -73,14 +73,6 @@ alias commit="git commit"
 
 
 
-# encodes the whole string
-# example:
-#   echo -n 'hi' | urlencode
-#   urlencode 'hi'
-function urlencode() {
-  url=$1
-  ruby -e 'puts (ARGV[0] || $stdin.readline).bytes.map { |b| "%%%02X" % b }.join' $1
-}
 
 alias 'vim=nvim'
 alias 'f=file=$(fzf) && print -s "vim $file" && vim $file'
