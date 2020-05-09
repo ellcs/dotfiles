@@ -29,7 +29,7 @@ floating_modifier $win
 # start a terminal
 #bindsym $win+Return     exec terminology
 bindsym $win+Return exec "terminology -e 'tmux -2 new-session \; set-option destroy-unattached on'"
-bindsym $win+Shift+Return exec "terminology"
+bindsym $win+Shift+Return exec "terminology -e 'tmux -2 attach -t $(tmux ls | fzf --reverse | cut -d':' -f1)'"
 
 # start htop
 bindsym $win+Shift+h    exec terminology -e htop -u alex
