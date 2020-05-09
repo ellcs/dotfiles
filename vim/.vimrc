@@ -12,15 +12,13 @@ filetype off                   " required!
 set t_Co=256
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
-filetype plugin on
-filetype indent on
-filetype on
-Plugin 'posva/vim-vue'
+Plugin 'lilydjwg/colorizer'
 Plugin 'godlygeek/tabular'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'ntpeters/vim-better-whitespace'
+"Plugin 'ntpeters/vim-better-whitespace'
 
+Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'majutsushi/tagbar'
 " Git
 " File browser
@@ -32,17 +30,18 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'atelierbram/vim-colors_atelier-schemes'
 Bundle 'ervandew/supertab'
-Bundle 'junkblocker/git-time-lapse'
-Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
 
-call vundle#end()
 " Checker
 Bundle 'vim-syntastic/syntastic'
 Bundle 'junkblocker/git-time-lapse'
 Plugin 'vim-airline/vim-airline'
-Plugin 'lervag/file-line'
-Plugin 'jceb/vim-orgmode'
+
+call vundle#end()
+
+filetype plugin on
+filetype indent on
+filetype on
 
 " autostart NERDTree
 " autocmd vimenter * NERDTree
@@ -82,9 +81,9 @@ set cursorline
 set cursorcolumn
 
 let &colorcolumn="80,100,".join(range(120,999),",")
-set background=dark
+set background=light
 set clipboard=unnamed
-colorscheme Atelier_ForestDark
+colorscheme Atelier_ForestLight
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
 " Easymotion minimal configuration

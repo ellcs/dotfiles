@@ -1,0 +1,136 @@
+#!/usr/bin/zsh
+
+HACKRC_FILE=${BASH_SOURCE:-$0}
+
+#
+# Allows you to operate ruby actions on given input
+#
+# E.g. simple oneliners:
+# 
+# USAGE: echo -n cBa | h_ruby_line "bytes"
+# USAGE: echo -n cBa | h_ruby_line "downcase"
+# USAGE: echo -n cBa | h_ruby_line "upcase" 
+#
+# But also more complex ones, with arguments or chaining
+# commands:
+#
+# USAGE: echo -n cBa | h_ruby_line "include?('a')"
+# USAGE: echo -n cBa | h_ruby_line "split('B').join(' ')"
+#
+# You can also require libraries:
+#
+# USAGE: echo -n cBa | h_ruby_line "to_json" -rjson
+#
+function h_ruby_line() {
+  str_opr=$1
+  shift
+  ruby -ne "(result= \$_.$str_opr) && puts(result)" $@
+}
+
+# USAGE: cp $(h_last_dl) .
+function h_last_dl() {
+  find ~/Downloads/ -type f -printf "%T@ %p\n" | sort -n | cut -d" " -f 2- | tail -n 1
+}
+
+# USAGE: h_usages >> ${HISTFILE}
+function h_usages() {
+  usages=$(grep -E '^. USAGE:' ${HACKRC_FILE})
+  echo $usages | sed 's/\# USAGE: //' | awk '{$1=$1;print}'
+}
+
+# do not add a usage here! :D
+function h_test_hacks() {
+  test_dir="/tmp/test_hacks"
+  old_hist=${HISTFILE}
+  test_hist=${test_dir}/histfile
+  
+  echo "Please read the test code first! Hit Ctrl+C if you didn't!"
+  echo "HISTFILE=${test_hist}"
+  read
+
+  # prep
+  mkdir -p ${test_dir}
+  pushd ${test_dir}
+  export HISTFILE=${test_hist}
+  IFS=$'\n'  
+
+  # eval tests
+  for usage in $(h_usages); do
+    eval "$usage 2>/dev/null 1>/dev/null"
+    ([ $? -eq 0 ] && echo -n 'succ: ') || echo -n 'fail: '
+    echo "$usage"
+  done 
+
+  # restore
+  unset IFS
+  export HISTFILE=$old_hist
+  popd
+  rm -rf ${test_dir}
+}
+
+# encodes everthing given
+#
+# examples:
+#
+# USAGE: echo -n 'encodeme' | h_urlencode_all
+#        # => %65%6E%63%6F%64%65%6D%65
+#
+# USAGE: h_urlencode_all <<(echo -n encodeme)
+#        # => %65%6E%63%6F%64%65%6D%65
+#
+# USAGE: echo -n encodeme > filename
+#        h_urlencode_all "filename"
+#        # => %65%6E%63%6F%64%65%6D%65
+#
+#        # with new line
+# USAGE: h_urlencode_all <<< encodeme
+#        # => %65%6E%63%6F%64%65%6D%65%0A
+#
+function h_urlencode_all() {
+  # change 'X' to 'x' for upcase hex chars
+  ruby -ne 'puts $_.bytes.map { |b| "%%%02X" % b }.join' $@
+}
+
+
+# removes ansi colors
+#
+# USAGE: ls --color | h_remove_colors
+function h_rm_colors() {
+  ruby -ne 'puts $_.gsub(/(\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]|\x0d)/, "")' $@
+}
+
+# encodes only special chars in given
+#
+# https://web.archive.org/web/20200429195510/https://secure.n-able.com/webhelp/NC_9-1-0_SO_en/Content/SA_docs/API_Level_Integration/API_Integration_URLEncoding.html
+# special chars = "$&+,/:;=?@ \"<>#%{}|\\^~[]`"
+#
+# manually added: '"
+#
+# USAGE: echo -n 'http://foobar/asdf?quer&' | h_urlencode_special
+function h_urlencode_special() {
+  ruby -ne 'puts($_.bytes.map{|b|if([0x22,0x24,0x26,0x27,0x2b,0x2c,0x2f,0x3a,0x3b,0x3d,
+            0x3f,0x40,0x20,0x22,0x3c,0x3e,0x23,0x25,0x7b,0x7d,0x7c,0x5c,0x5e,
+            0x7e,0x5b,0x5d,0x60].include?(b))then("%%%02x"%b)else(b.chr)end}.join)' $@
+}
+
+function h_urldecode() {
+  ruby -ruri -ne 'puts URI.decode($_.strip)' 2>/dev/null $@
+}
+
+function h_lineno() {
+  awk '{printf("%02d  %s\n", NR, $0)}' $@
+}
+
+function h_shellescape() {
+  ruby -rshellwords -ne $'\$stdout.write(Shellwords.escape($_))' $@
+}
+
+function h_hex_all() {
+  ruby -ne $'$stdout.write($_.bytes.map { |b| "\\\\x#{"%02x"%b}" }.join)' $@
+}
+
+function h_hex_special() {
+  ruby -ne '$stdout.write($_.bytes.map{|b|
+            if(b<=0x20||b==0x7f)then("\\x%02x"%b)else(b.chr)end
+            }.join)'
+}
