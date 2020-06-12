@@ -15,6 +15,7 @@ call vundle#rc()
 filetype plugin on
 filetype indent on
 filetype on
+
 Plugin 'posva/vim-vue'
 Plugin 'godlygeek/tabular'
 Plugin 'easymotion/vim-easymotion'
@@ -76,9 +77,9 @@ set expandtab
 set cursorcolumn
 set cursorline
 let &colorcolumn="80,100,".join(range(120,999),",")
-set background=dark
+set background=light
 set clipboard=unnamed
-colorscheme Atelier_ForestDark
+colorscheme Atelier_ForestLight
 syntax on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
@@ -98,6 +99,8 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+let maplocalleader = ','
 
 
 " DOC
