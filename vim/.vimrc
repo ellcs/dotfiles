@@ -11,7 +11,6 @@ filetype off                   " required!
 set t_Co=256
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
-Plugin 'lilydjwg/colorizer'
 Plugin 'godlygeek/tabular'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'plasticboy/vim-markdown'
@@ -101,6 +100,8 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+let maplocalleader = ','
 
 
 " DOC

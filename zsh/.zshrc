@@ -60,9 +60,8 @@ alias '..=cd ..'
 alias 'pdf=okular'
 alias 'beepoff=xset -b'
 
-alias 'se=(gimp &); sleep 0.3; gimp $(ls -d --sort=time ~/Pictures/screenshots/* | fzf -m | paste -d" " -s -)'
-alias 'sx=pic=$(ls -d --sort=time ~/Pictures/screenshots/* | fzf) && xclip -selection clipboard -t image/png -i "$pic"'
 alias ipa="ip a"
+# git
 alias g='git'
 alias ga='git add'
 alias gl='git log'
@@ -71,11 +70,14 @@ alias gd='git diff'
 alias gc='git commit'
 alias gp='git pull'
 alias gg='git gui'
+function gj() {
+  git log \
+      --pretty=format:'{%n  "commit": "%H",%n  "author": "%aN <%aE>",%n  "date": "%ad",%n  "message": "%f"%n},' \
+      $@ | \
+      perl -pe 'BEGIN{print "["}; END{print "]\n"}' | \
+      perl -pe 's/},]/}]/'
+}
 
-
-
-
-alias 'vim=nvim'
 alias 'f=file=$(fzf) && print -s "vim $file" && vim $file'
 zle -N zle-line-init
 zle -N zle-keymap-select
