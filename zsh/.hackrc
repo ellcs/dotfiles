@@ -134,3 +134,39 @@ function h_hex_special() {
             if(b<=0x20||b==0x7f)then("\\x%02x"%b)else(b.chr)end
             }.join)'
 }
+
+#ID  | Method
+#---------------------------------------------------------
+#1   | MD5
+function h_crypt_md5() {
+  ruby -ne 'puts $_.crypt("$1$salt")'
+}
+
+#ID  | Method
+#---------------------------------------------------------
+#2a  | Blowfish (not in mainline glibc; added in some
+function h_crypt_blowfish() {
+  ruby -ne 'puts $_.crypt("$2a$salt")'
+}
+
+#ID  | Method
+#---------------------------------------------------------
+#    | Linux distributions) 
+function h_crypt_linux() {
+  ruby -ne 'puts $_.crypt("salt")'
+}
+
+#ID  | Method
+#---------------------------------------------------------
+#5   | SHA-256 (since glibc 2.7)
+function h_crypt_sha256() {
+  ruby -ne 'puts $_.crypt("$5$salt")'
+}
+
+#ID  | Method
+#---------------------------------------------------------
+#6   | SHA-512 (since glibc 2.7)
+function h_crypt_sha512() {
+  ruby -ne 'puts $_.crypt("$6$salt")'
+}
+
