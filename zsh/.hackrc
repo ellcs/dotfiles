@@ -177,3 +177,12 @@ function h_crypt_ntlm() {
   ruby -ropenssl -ne "puts OpenSSL::Digest::MD4.hexdigest(\$_.encode(Encoding::UTF_16LE))" $@
 }
 
+
+
+function h_help_grep() {
+  echo "CamelCase: grep -EHrn '([A-Z][a-z]+){2,}'"
+  echo "snake_case: grep -EHrn '[a-z][a-z0-9]*(_[a-z0-9]+)+'"
+}
+
+
+
