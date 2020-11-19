@@ -81,8 +81,6 @@ function gj() {
 }
 
 alias 'f=file=$(fzf) && print -s "vim $file" && vim $file'
-zle -N zle-line-init
-zle -N zle-keymap-select
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
