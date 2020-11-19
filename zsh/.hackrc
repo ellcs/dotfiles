@@ -68,6 +68,14 @@ function h_test_hacks() {
   rm -rf ${test_dir}
 }
 
+# removes ansi colors
+#
+# USAGE: ls --color | h_remove_colors
+function h_rm_colors() {
+  ruby -ne 'puts $_.gsub(/(\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]|\x0d)/, "")' $@
+}
+
+
 # encodes everthing given
 #
 # examples:
@@ -91,13 +99,6 @@ function h_urlencode_all() {
   ruby -ne 'puts $_.bytes.map { |b| "%%%02X" % b }.join' $@
 }
 
-
-# removes ansi colors
-#
-# USAGE: ls --color | h_remove_colors
-function h_rm_colors() {
-  ruby -ne 'puts $_.gsub(/(\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]|\x0d)/, "")' $@
-}
 
 # encodes only special chars in given
 #
