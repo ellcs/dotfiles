@@ -123,11 +123,11 @@ function h_lineno() {
 }
 
 function h_shellescape() {
-  ruby -rshellwords -ne $'\$stdout.write(Shellwords.escape($_))' $@
+  ruby -rshellwords -ne $'print(Shellwords.escape($_))' $@
 }
 
 function h_hex_all() {
-  ruby -ne $'$stdout.write($_.bytes.map { |b| "\\\\x#{"%02x"%b}" }.join)' $@
+  ruby -ne $'print($_.bytes.map { |b| "\\\\x#{"%02x"%b}" }.join)' $@
 }
 
 # and space
