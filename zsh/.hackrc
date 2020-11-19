@@ -130,8 +130,11 @@ function h_hex_all() {
   ruby -ne $'$stdout.write($_.bytes.map { |b| "\\\\x#{"%02x"%b}" }.join)' $@
 }
 
-function h_hex_special() {
-  ruby -ne '$stdout.write($_.bytes.map{|b|
-            if(b<=0x20||b==0x7f)then("\\x%02x"%b)else(b.chr)end
-            }.join)'
+# and space
+function h_hex_unreadable() {
+  ruby -ne 'print($_.bytes.map{|b|
+            if(b<=0x20||b>=0x7f)then("\\x%02x"%b)else(b.chr)end
+            }.join)' $@
+}
+
 }
