@@ -86,5 +86,6 @@ zle -N zle-keymap-select
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 
+source ~/.hackrc
 export WORKON_HOME=$HOME/.virtual_envs
 source /usr/bin/virtualenvwrapper.sh
