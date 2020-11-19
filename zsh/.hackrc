@@ -126,6 +126,22 @@ function h_shellescape() {
   ruby -rshellwords -ne $'print(Shellwords.escape($_))' $@
 }
 
+# does not print bytes 
+function h_unicode_unstable() {
+  ruby -ne $'
+    unicodes = $_.scan(/../)
+                 .map { |h| h.to_i(16).chr }
+                 .join.force_encoding(Encoding::UTF_8)
+    print(unicodes)
+  ' $@
+}
+
+# escapes bytes
+function h_unicode() {
+  h_unicode_unstable | h_hex_unreadable
+}
+
+
 function h_hex_all() {
   ruby -ne $'print($_.bytes.map { |b| "\\\\x#{"%02x"%b}" }.join)' $@
 }
