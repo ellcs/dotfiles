@@ -24,6 +24,8 @@ HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
 
+export EDITOR=vim
+
 export PATH=~/.gem/ruby/2.3.0/bin:$PATH
 export PATH=~/.gem/ruby/2.4.0/bin:$PATH
 export PATH=~/.gem/ruby/2.5.0/bin:$PATH
