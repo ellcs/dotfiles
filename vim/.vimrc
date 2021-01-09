@@ -12,13 +12,10 @@ set t_Co=256
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 Plugin 'godlygeek/tabular'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'plasticboy/vim-markdown'
+Bundle 'ervandew/supertab'
 "Plugin 'ntpeters/vim-better-whitespace'
 
-Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'majutsushi/tagbar'
-" Git
 " File browser
 Bundle 'scrooloose/nerdtree'
 " Fuzzy searcher
@@ -26,14 +23,17 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 " Git in file browser
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'atelierbram/vim-colors_atelier-schemes'
-Bundle 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
+Plugin 'atelierbram/vim-colors_atelier-schemes'
 
 " Checker
 Bundle 'vim-syntastic/syntastic'
 Bundle 'junkblocker/git-time-lapse'
 Plugin 'vim-airline/vim-airline'
+Plugin 'rust-lang/rust.vim'
+Plugin 'vim-scripts/Conque-GDB'
+Plugin 'racer-rust/vim-racer'
+Plugin 'udalov/kotlin-vim.git'
 
 call vundle#end()
 
@@ -46,12 +46,10 @@ filetype on
 autocmd VimEnter * if argc() == 0 | NERDTree | endif
 let g:NERDTreeDirArrows=0
 
-" this command opens your browser, which is loading current file
-" markdown files might be represented via browserapps
-autocmd BufEnter *.md exe 'noremap <F5> :! chromium %:p<CR>'
-
 let g:pdf_convert_on_read=1
 let g:pdf_convert_on_edit=1
+
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
 
 " Remove whitespaces on save
 "autocmd BufWritePre * StripWhitespace
@@ -79,7 +77,7 @@ set cursorline
 set cursorcolumn
 
 let &colorcolumn="80,100,".join(range(120,999),",")
-set background=light
+set background=dark
 set clipboard=unnamed
 colorscheme Atelier_ForestLight
 
@@ -132,3 +130,8 @@ let g:airline#extensions#tabline#enabled = 1
 
 hi SpellBad cterm=underline
 let FZF_PREVIEW_HEIGHT=12
+
+let g:racer_cmd = "/home/ellcs/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+let g:racer_insert_paren = 1
+
