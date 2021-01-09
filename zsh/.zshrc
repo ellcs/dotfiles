@@ -31,6 +31,8 @@ export PATH=~/.gem/ruby/2.4.0/bin:$PATH
 export PATH=~/.gem/ruby/2.5.0/bin:$PATH
 export PATH=~/.gem/ruby/2.6.0/bin:$PATH
 export PATH=~/.gem/ruby/2.7.0/bin:$PATH
+export PATH=~/.gem/ruby/2.7.1/bin:$PATH
+export PATH=~/.local/bin:$PATH
 export PATH=~/scripts:$PATH
 
 # FORMAT OF PROMPT
