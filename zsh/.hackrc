@@ -1,6 +1,12 @@
 #!/usr/bin/zsh
+# GPL 3.0
+# ellcs
+# How needs CyberChef?
+
 
 HACKRC_FILE=${BASH_SOURCE:-$0}
+
+# colors
 
 #
 # Allows you to operate ruby actions on given input
@@ -30,6 +36,11 @@ function h_ruby_line() {
 # USAGE: cp $(h_last_dl) .
 function h_last_dl() {
   find ~/Downloads/ -type f -printf "%T@ %p\n" | sort -n | cut -d" " -f 2- | tail -n 1
+}
+
+# USAGE: h_mv_last_dl
+function h_mv_last_dl() {
+  mv $(h_last_dl) .
 }
 
 # USAGE: h_usages >> ${HISTFILE}
@@ -154,3 +165,44 @@ function h_hex_unreadable() {
 }
 
 }
+
+#ID  | Method
+#---------------------------------------------------------
+#1   | MD5
+#2a  | Blowfish (not in mainline glibc; added in some
+#    | Linux distributions) 
+#5   | SHA-256 (since glibc 2.7)
+#6   | SHA-512 (since glibc 2.7)
+function h_crypt_md5() {
+  ruby -ne 'puts $_.crypt("$1$salt")'
+}
+function h_crypt_blowfish() {
+  ruby -ne 'puts $_.crypt("$2a$salt")'
+}
+function h_crypt_linux() {
+  ruby -ne 'puts $_.crypt("salt")'
+}
+function h_crypt_sha256() {
+  ruby -ne 'puts $_.crypt("$5$salt")'
+}
+function h_crypt_sha512() {
+  ruby -ne 'puts $_.crypt("$6$salt")'
+}
+
+# USAGE: echo -n password | h_crypt_ntlm 
+#        => 8846f7eaee8fb117ad06bdd830b7586c
+#
+# https://stackoverflow.com/questions/15603628/how-to-calculate-ntlm-hash-in-python
+function h_crypt_ntlm() {
+  ruby -ropenssl -ne "puts OpenSSL::Digest::MD4.hexdigest(\$_.encode(Encoding::UTF_16LE))" $@
+}
+
+
+
+function h_help_grep() {
+  echo "CamelCase: grep -EHrn '([A-Z][a-z]+){2,}'"
+  echo "snake_case: grep -EHrn '[a-z][a-z0-9]*(_[a-z0-9]+)+'"
+}
+
+
+
