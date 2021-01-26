@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 # GPL 3.0
 # ellcs
-# How needs CyberChef?
+# Who needs CyberChef?
 
 
 HACKRC_FILE=${BASH_SOURCE:-$0}
@@ -49,35 +49,6 @@ function h_usages() {
   echo $usages | sed 's/\# USAGE: //' | awk '{$1=$1;print}'
 }
 
-# do not add a usage here! :D
-function h_test_hacks() {
-  test_dir="/tmp/test_hacks"
-  old_hist=${HISTFILE}
-  test_hist=${test_dir}/histfile
-  
-  echo "Please read the test code first! Hit Ctrl+C if you didn't!"
-  echo "HISTFILE=${test_hist}"
-  read
-
-  # prep
-  mkdir -p ${test_dir}
-  pushd ${test_dir}
-  export HISTFILE=${test_hist}
-  IFS=$'\n'  
-
-  # eval tests
-  for usage in $(h_usages); do
-    eval "$usage 2>/dev/null 1>/dev/null"
-    ([ $? -eq 0 ] && echo -n 'succ: ') || echo -n 'fail: '
-    echo "$usage"
-  done 
-
-  # restore
-  unset IFS
-  export HISTFILE=$old_hist
-  popd
-  rm -rf ${test_dir}
-}
 
 # removes ansi colors
 #
@@ -125,6 +96,7 @@ function h_urlencode_special() {
             0x7e,0x5b,0x5d,0x60].include?(b))then("%%%02x"%b)else(b.chr)end}.join)' $@
 }
 
+# USAGE: echo -n '%20' | h_urldecode
 function h_urldecode() {
   ruby -ruri -ne 'puts URI.decode($_.strip)' 2>/dev/null $@
 }
@@ -133,6 +105,7 @@ function h_lineno() {
   awk '{printf("%02d  %s\n", NR, $0)}' $@
 }
 
+# USAGE: cat script.sh | h_shellescape
 function h_shellescape() {
   ruby -rshellwords -ne $'print(Shellwords.escape($_))' $@
 }
@@ -153,18 +126,20 @@ function h_unicode() {
 }
 
 
+# USAGE: echo -e "abc\x99" | h_hex_unreadable
 function h_hex_all() {
   ruby -ne $'print($_.bytes.map { |b| "\\\\x#{"%02x"%b}" }.join)' $@
 }
 
-# and space
+# USAGE: echo -e "abc\x99" | h_hex_unreadable
 function h_hex_unreadable() {
   ruby -ne 'print($_.bytes.map{|b|
-            if(b<=0x20||b>=0x7f)then("\\x%02x"%b)else(b.chr)end
+            if(b<0x20||b>=0x7f)then("\\x%02x"%b)else(b.chr)end
             }.join)' $@
 }
 
-function h_strip() {
+# USAGE: echo "    abc  wd" | h_strip_lines
+function h_strip_lines() {
   ruby -ne 'puts($_.strip!)' $@
 }
 
@@ -200,11 +175,32 @@ function h_crypt_ntlm() {
 }
 
 
+# USAGE: h_fetch_capabilities
+function h_fetch_capabilities() {
+  cat /proc/$$/status | grep Cap
+}
+
+# USAGE: h_capabilities | less
+function h_capabilities() {
+  old_ifs=$IFS
+  IFS=$'\n'
+  for line in $(h_fetch_capabilities); do 
+    cap_type=$(echo -n $line | awk -d' ' '{ print $1 }')
+    cap_code=$(echo -n $line | awk -d' ' '{ print $2 }')
+    echo "$cap_type"
+    decode_capability "$cap_code" | awk '{ printf("  %s\n", $0) }'
+  done
+  IFS=$old_ifs
+}
+
+# Fetch capability from /proc/$$/status with `fetch_caps`
+#
+# USAGE: decode_capability 00000000800405fb
+function decode_capability() {
+  capsh --decode=$1 | tr , \\n
+}
 
 function h_help_grep() {
   echo "CamelCase: grep -EHrn '([A-Z][a-z]+){2,}'"
   echo "snake_case: grep -EHrn '[a-z][a-z0-9]*(_[a-z0-9]+)+'"
 }
-
-
-
