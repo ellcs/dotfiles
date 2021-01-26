@@ -9,33 +9,58 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 set t_Co=256
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
-Plugin 'godlygeek/tabular'
-Bundle 'ervandew/supertab'
-"Plugin 'ntpeters/vim-better-whitespace'
-
-Plugin 'majutsushi/tagbar'
-" File browser
-Bundle 'scrooloose/nerdtree'
-" Fuzzy searcher
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'junegunn/fzf.vim'
-" Git in file browser
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tpope/vim-fugitive'
-Plugin 'atelierbram/vim-colors_atelier-schemes'
+"set rtp+=~/.vim/bundle/Vundle.vim/
+"call vundle#rc()
+"Plugin 'godlygeek/tabular'
+"Bundle 'ervandew/supertab'
+""Plugin 'ntpeters/vim-better-whitespace'
+"
+"Plugin 'majutsushi/tagbar'
+"" File browser
+"Bundle 'scrooloose/nerdtree'
+"" Fuzzy searcher
+"Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plugin 'junegunn/fzf.vim'
+"" Git in file browser
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'atelierbram/vim-colors_atelier-schemes'
+"
+"" Checker
+"Bundle 'vim-syntastic/syntastic'
+"Bundle 'junkblocker/git-time-lapse'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'rust-lang/rust.vim'
+"Plugin 'vim-scripts/Conque-GDB'
+"Plugin 'racer-rust/vim-racer'
+"Plugin 'udalov/kotlin-vim.git'
+"set rtp+=~/.vim/bundle/Vundle.vim/
+"call vundle#rc()
+"Plugin 'godlygeek/tabular'
+"Plugin 'easymotion/vim-easymotion'
+"Plugin 'plasticboy/vim-markdown'
+""Plugin 'ntpeters/vim-better-whitespace'
+"
+"Plugin 'autozimu/LanguageClient-neovim'
+"Plugin 'majutsushi/tagbar'
+"" Git
+"" File browser
+"Bundle 'scrooloose/nerdtree'
+"" Fuzzy searcher
+"Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plugin 'junegunn/fzf.vim'
+"" Git in file browser
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'atelierbram/vim-colors_atelier-schemes'
+"Bundle 'ervandew/supertab'
+"Plugin 'tpope/vim-fugitive'
 
 " Checker
-Bundle 'vim-syntastic/syntastic'
-Bundle 'junkblocker/git-time-lapse'
-Plugin 'vim-airline/vim-airline'
-Plugin 'rust-lang/rust.vim'
-Plugin 'vim-scripts/Conque-GDB'
-Plugin 'racer-rust/vim-racer'
-Plugin 'udalov/kotlin-vim.git'
+"Bundle 'vim-syntastic/syntastic'
+"Bundle 'junkblocker/git-time-lapse'
+"Plugin 'vim-airline/vim-airline'
 
-call vundle#end()
+"call vundle#end()
 
 filetype plugin on
 filetype indent on
